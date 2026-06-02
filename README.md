@@ -120,3 +120,12 @@ Licensed under the [Apache License, Version 2.0](LICENSE)
 - WeChat Official Account (in Chinese, scan the QR code to follow)
 
 <img src="https://streampark.apache.org/image/wx_qr.png" alt="Join the Group" height="350px"><br>
+
+netstat -ano | findstr :10000
+taskkill /F /PID 6124 /T
+
+export HADOOP_USER_NAME=hdfs
+export JAVA_HOME=/data/lakehouse/jdk-17.0.17
+/data/lakehouse/flink-cdc/bin/flink-cdc.sh -t yarn-application  -Dyarn.application.queue=flink_queue  -Dtaskmanager.numberOfTaskSlots=2  -Dparallelism.default=1 -Dexecution.checkpointing.interval=1min /data/lakehouse/flink-cdc/4.yaml --flink-home=/data/lakehouse/flink-1.20.3
+
+mvn -Pshaded,webapp,dist -DskipTests clean install
